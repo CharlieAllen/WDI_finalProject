@@ -1,6 +1,6 @@
 angular
   .module('tedchatApp', [])
-  .controller('MainController', MainController)
+  .controller('MainController', MainController);
 
 function createSearch(keyword) {
   console.log("SEARCH!");
