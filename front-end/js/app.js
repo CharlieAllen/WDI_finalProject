@@ -1,13 +1,26 @@
 angular
   .module('tedchatApp', [])
   .controller('MainController', MainController)
-  .directive('video', videoView);
+  .directive('youtube', youtubeView)
+  .constant('YOUTUBE_URL', 'https://www.youtube.com/embed/')
+  .config(whitelistUrls);
 
-function videoView(){
+MainController.$inject = ['YOUTUBE_URL'];
+
+whitelistUrls.$inject = ['$sceDelegateProvider', 'YOUTUBE_URL'];
+
+function whitelistUrls($sceDelegateProvider, YOUTUBE_URL){
+  $sceDelegateProvider.resourceUrlWhitelist([
+    'self', 
+    YOUTUBE_URL + '/**'
+  ])
+};
+
+function youtubeView(){
   var directive = {};
   directive.restrict = 'E';
   directive.replace = true;
-  directive.templateUrl = '_videoView.html';
+  directive.templateUrl = '_youtubeView.html';
   directive.scope = {
     videoId: '='
   }
@@ -19,7 +32,7 @@ function createSearch(keyword) {
       q: keyword,
       part: "snippet",
       channelId: "UCAuUUnT6oDeKwE6v1NGQxug",
-      maxResults: 5,
+      maxResults: 6,
       type: "video"
     });
   onYouTubeIframeAPIReady();
@@ -32,7 +45,7 @@ function init() {
   });
 };
 
-function MainController(){
+function MainController(YOUTUBE_URL){
   console.log("LOADED!");
   var main = this;
 
@@ -41,7 +54,7 @@ function MainController(){
   main.search = function() {
     createSearch(main.keyword).execute(function(res) {
       main.videoIds = res.items.map(function(item) {
-        return item.id.videoId;
+        return YOUTUBE_URL + item.id.videoId;
       });
 
       console.log(main.videoIds);
