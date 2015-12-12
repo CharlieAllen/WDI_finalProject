@@ -4963,7 +4963,6 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
-  padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
@@ -4972,11 +4971,13 @@ a.badge:focus {
 .jumbotron h1,
 .jumbotron .h1 {
   color: inherit;
+  margin-left: 20px;
 }
 .jumbotron p {
   margin-bottom: 15px;
   font-size: 20px;
   font-weight: 200;
+  margin-left: 20px;
 }
 .jumbotron > hr {
   border-top-color: #dbdbdb;
@@ -4992,7 +4993,6 @@ a.badge:focus {
 }
 @media screen and (min-width: 768px) {
   .jumbotron {
-    padding-top: 48px;
     padding-bottom: 48px;
   }
   .container .jumbotron,
@@ -6776,6 +6776,7 @@ button.close {
   -webkit-filter: none;
           filter: none;
   border: 1px solid #2e2f2f;
+  margin-left: 10px;
 }
 .btn-primary,
 .btn-primary:hover {

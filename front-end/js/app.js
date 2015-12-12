@@ -1,9 +1,20 @@
 angular
   .module('tedchatApp', [])
-  .controller('MainController', MainController);
+  .controller('MainController', MainController)
+  .directive('video', videoView);
+
+function videoView(){
+  var directive = {};
+  directive.restrict = 'E';
+  directive.replace = true;
+  directive.templateUrl = '_videoView.html';
+  directive.scope = {
+    videoId: '='
+  }
+  return directive;
+}
 
 function createSearch(keyword) {
-  console.log("SEARCH!");
   return request = gapi.client.youtube.search.list({
       q: keyword,
       part: "snippet",
@@ -11,7 +22,9 @@ function createSearch(keyword) {
       maxResults: 5,
       type: "video"
     });
+  onYouTubeIframeAPIReady();
 }
+
 
 function init() {
   gapi.client.load('youtube', 'v3').then(function() {
@@ -34,7 +47,6 @@ function MainController(){
       console.log(main.videoIds);
     });
   };
-
 }
 
 
