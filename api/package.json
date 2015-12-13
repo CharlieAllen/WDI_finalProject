@@ -1,0 +1,16 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "TEDChat App",
+  "main": "app.js",
+  "dependencies": {
+    "express-jwt": "^3.3.0",
+    "jsonwebtoken": "^5.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Charlie Allen",
+  "license": "ISC"
+}
