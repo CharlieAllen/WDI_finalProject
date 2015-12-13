@@ -1,56 +1,61 @@
-var User = require('../models/user');
+var User      = require('../models/user');
 
-function indexUsers(req, res){
+function allUsers(req, res) {
   User.find(function(error, users){
-    if (error) return res.status(404).json({message: 'Error'});
-    return res.status(200).send(users);
+    if (error) res.json({ message: "Could not find any user"});
+    return res.json({ users: users });
   });
 }
 
-function newUser(req, res){
+function newUser(req, res) {
   var user = new User(req.body);
+
   user.save(function(error){
-    if (error) return res.status(403).send({message: "Error"})
-    return res.status(200).send(user);
+    if (error) res.status(403).send({message: "Could not create new user because: + error" });
+    return res.json({ user: user });
   });
 }
 
-function showUser(req, res){
+function getUser(req, res) {
   var id = req.params.id;
+
   User.findById({_id: id}, function(error, user){
-    if (error) return res.status(404).send({message: 'Error'})
+    if (error) res.json({message: "Could not find user because: " + error })
     return res.status(200).send(user);
   });
 }
 
-function updateUser(req, res){
+function updateUser(req, res) {
   var id = req.params.id;
+
   User.findById({_id: id}, function(error, user) {
-    if (error) return res.status(404).send({message: 'Error'})
+    if (error) res.json({message: "Could not find user because" + error });
 
     if (req.body.name) user.name = req.body.name;
-    if (req.body.location) user.location = req.body.location;
 
     user.save(function(error) {
-      if (error) return res.status(500).send({message: "Error"})
-      return res.status(200).send(user);
+      if (error) res.json({message: "Could not update user because: " + error});
+
+      res.json({ message: "User succesfully updated", user: user });
     });
   });
 }
 
-function deleteUser(req, res){
+function deleteUser(req, res) {
   var id = req.params.id;
+
   User.remove({_id: id}, function(error) {
-    if (error) res.status(404).send({message: 'Error'})
-    res.status(204);
+    if (error) res.json({ message: "Could not delete user because: " + error });
+
+      res.json({ message: "User successfully deleted" });
   });
   return;
 }
 
 module.exports = {
-  indexUsers: indexUsers,
+  allUsers: allUsers,
   newUser: newUser,
-  showUser: showUser,
+  getUser: getUser,
   updateUser: updateUser,
   deleteUser: deleteUser
 }
