@@ -14,17 +14,9 @@ UserSchema.pre('save', function(next) {
   var user = this;
 
   if (!user.isModified('password')) return next();
+  user.password = bcrypt.hashSync(user.password, 10);
 
-  bcrypt.genSalt(5, function(err, salt) {
-    if (err) return next(err);
-
-    bcrypt.hash(user.password, salt, function(err, hash) {
-      if (err) return next(err);
-
-      user.password = hash;
-      next();
-    });
-  });
+  next();
 });
 
 UserSchema.methods.authenticate = function(password, callback) {

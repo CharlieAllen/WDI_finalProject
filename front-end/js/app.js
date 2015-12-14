@@ -33,5 +33,5 @@ function MainController($stateProvider, $urlRouterProvider) {
       url: '/signup', 
       templateUrl: 'signup.html'
     });
-  $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/");
 }

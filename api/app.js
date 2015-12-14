@@ -30,6 +30,13 @@ app.use(cookieParser());
 app.use('/api/users', expressJWT({ secret: secret }));
 app.use('/api/users/:id', expressJWT({secret: secret}));
 
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    return res.status(401).json({message: 'Unauthorized request.'});
+  }
+  next();
+});
+
 app.use(routes);
 
 app.post("/signup", function(req ,res) {
@@ -58,7 +65,8 @@ app.post("/login", function(req, res) {
       if (err) throw err;
 
       if (isMatch) {
-        return res.json({ message: "Login successful." });
+        var token = jwt.sign(user, secret, { expiresIn: '30d' });
+        res.status(200).json({ token: token });
       } else {
         return res.json({ message: "The details provided do not match any user in our system" });
       };
