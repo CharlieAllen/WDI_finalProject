@@ -1,35 +1,36 @@
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt');
 
-var UserSchema = mongoose.Schema({
+var UserSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true},
-  password: { type: Stringm required: true },
+  password: { type: String, required: true },
   location: { type: String },
   industry: { type: String },
   about_me: { type: String }
 });
 
-UserSchema.set('toJSON', {
-  transform: function(doc, ret, options) {
-    var returnJson = {
-      id: ret._id,
-      name: ret.name,
-      location: ret.location,
-      industry: ret.industry,
-      about_me: ret.about_me
-    };
-    return returnJson;
-  }
-});
-
 UserSchema.pre('save', function(next) {
-  this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
-  next();
+  var user = this;
+
+  if (!user.isModified('password')) return next();
+
+  bcrypt.genSalt(5, function(err, salt) {
+    if (err) return next(err);
+
+    bcrypt.hash(user.password, salt, function(err, hash) {
+      if (err) return next(err);
+
+      user.password = hash;
+      next();
+    });
+  });
 });
 
-UserSchema.methods.validPassword = function(password) {
-  return bcrypt.compareSync(password, this.password);
+UserSchema.methods.authenticate = function(password, callback) {
+  bcrypt.compare(password, this.password, function(err, isMatch) {
+    callback(null, isMatch)
+  })
 }
 
 module.exports = mongoose.model("User", UserSchema);

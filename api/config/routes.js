@@ -3,7 +3,7 @@ var express      = require('express');
   bodyParser     = require('body-parser'),
   methodOverride = require('method-override');
 
-var usersController = require('../controllers/users');
+var usersController = require('../controllers/usersController');
 
 router.route('/users')
   .get(usersController.getAll)
