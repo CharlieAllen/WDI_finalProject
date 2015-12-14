@@ -6,6 +6,7 @@ var cookieParser  = require('cookie-parser');
 var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 var expressJWT    = require('express-jwt');
+var jwt           = require('jsonwebtoken');
 var app           = express();
 var routes        = require('./config/routes');
 var bcrypt        = require('bcrypt');
@@ -14,8 +15,10 @@ var User          = require('./models/user');
 
 var app           = express();
 
+var secret        = "SECRETWORDFORTEDCHATAPP"
+
 mongoose.connect('mongodb://localhost/tedChatApp');
-var secret = "NOTVERYSECRET";
+
 
 app.use(cors());
 
@@ -27,13 +30,13 @@ app.use(cookieParser());
 app.use(routes);
 
 app.post("/signup", function(req ,res) {
-  var userObject = new User(req.body.user);
+  var userParams = new User(req.body.user);
 
-  userObject.save(function(err, user ){
+  userParams.save(function(err, user ){
     if (err) return res.json({ message: err });
 
     //create a JWT and return to the angular app
-    var token = jwt.sign(user, secret, { expiresIn: '24h' });
+    var token = jwt.sign(user, secret, { expiresIn: '30d' });
     res.json({ token: token });
 
 
@@ -41,6 +44,23 @@ app.post("/signup", function(req ,res) {
     // });
   });
 })
+
+app.post("/login", function(req, res) {
+  var userParams = req.body.user;
+
+  User.findOne({ email: userParams.email }, function(err, user) {
+
+    user.authenticate(userParams.password, function(err, isMatch) {
+      if (err) throw err;
+
+      if (isMatch) {
+        return res.json({ message: "Login successful." });
+      } else {
+        return res.json({ message: "The details provided do not match any user in our system" });
+      };
+    });
+  });
+});
 
 app.listen(3000);
 console.log("Express is listening on PORT:3000")
