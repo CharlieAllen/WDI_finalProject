@@ -1,4 +1,4 @@
-var express      = require('express');
+var express      = require('express'),
   router         = express.Router(),
   bodyParser     = require('body-parser'),
   methodOverride = require('method-override');
@@ -14,4 +14,4 @@ router.route('/users/:id')
   .patch(usersController.updateUser)
   .delete(usersController.deleteUser);
 
-module.exports = router
+module.exports = router;

@@ -1,5 +1,5 @@
 angular
-  .module('tedchatApp', [])
+  .module('tedchatApp', ['ui-router'])
   .constant('YOUTUBE_URL', 'https://www.youtube.com/embed/')
   .config(whitelistUrls);
 
@@ -18,3 +18,20 @@ function whitelistUrls($sceDelegateProvider, YOUTUBE_URL){
     YOUTUBE_URL + '**'
   ])
 };
+
+function MainController($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('home', {
+      url: '/',
+      templateUrl: 'home.html'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'login.html'
+    })
+    .state('signup', {
+      url: '/signup', 
+      templateUrl: 'signup.html'
+    });
+  $urlRouterProvider.otherwise("/");
+}
