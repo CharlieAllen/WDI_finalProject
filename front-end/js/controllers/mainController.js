@@ -17,6 +17,42 @@ MainController.$inject = ['$scope', 'YOUTUBE_URL'];
 function MainController($scope, YOUTUBE_URL){
   var main = this;
 
+  this.all = [];
+
+  function handleLogin(res) {
+    var token = res.token ? res.token : null;
+
+    if (token) {
+      console.log(res);
+      main.getUsers();
+      main.user = TokenService.decodeToken();
+    }
+
+    main.message = res.message;
+  }
+
+  main.authorize = function() {
+    User.authorize(main.user, handleLogin);
+  }
+
+  main.disappear = function() {
+    TokenService.removeToken();
+    main.all = [];
+  }
+
+  main.getUsers = function() {
+    main.all = User.query();
+  }
+
+  main.isLoggedIn = function() {
+    return !!TokenService.getToken();
+  }
+
+  if (main.isLoggedIn()) {
+    main.getUsers();
+    main.user = TokenService.decodeToken();
+  }
+
   main.videoIds = [];
 
   // added this
