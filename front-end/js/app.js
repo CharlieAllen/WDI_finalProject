@@ -34,6 +34,10 @@ function MainRouter($stateProvider, $urlRouterProvider) {
     .state('signup', {
       url: '/signup', 
       templateUrl: 'signup.html'
+    })
+    .state('about', {
+      url: '/about',
+      templateUrl: 'about.html'
     });
   
   $urlRouterProvider.otherwise("/");

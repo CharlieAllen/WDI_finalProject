@@ -1,12 +1,12 @@
 <main>
-      <div class="jumbotron">
-        <h1 class="jumbohead">TED Chat</h1>
-        <p>Find and save your favourite TED Talks easily.</p>
-        <p>Leave notes for yourself about why you love a talk or discuss with other people what's great about it.</p>
-        <p><a class="btn btn-info btn-lg">Learn more</a></p>
-      </div>
+  <div class="jumbotron">
+    <h1 class="jumbohead">TED Chat</h1>
+    <p>Find and save your favourite TED Talks easily.</p>
+    <p>Leave notes for yourself about why you love a talk or discuss with other people what's great about it.</p>
+    <p><a class="btn btn-info btn-lg" ui-sref="about">Learn more</a></p>
+  </div>
 
-      <div ng-repeat="videoId in main.videoIds">
-        <youtube video-id="videoId"></youtube>
-      </div>
-    </main>
+  <div ng-repeat="videoId in main.videoIds">
+    <youtube video-id="videoId"></youtube>
+  </div>
+</main>
