@@ -7,11 +7,9 @@ angular
 
 // Google API callback function...
 function init() {
-  console.log("LOADED!");
-  gapi.client.load('youtube', 'v3').then(function() {
-    gapi.client.setApiKey('AIzaSyDTU2aqu4zGnwda1KYKF2VwLYqG8hcTaM8');
-  });
+  window.init();
 };
+
 
 whitelistUrls.$inject = ['$sceDelegateProvider', 'YOUTUBE_URL'];
 function whitelistUrls($sceDelegateProvider, YOUTUBE_URL){
@@ -38,6 +36,10 @@ function MainRouter($stateProvider, $urlRouterProvider) {
     .state('about', {
       url: '/about',
       templateUrl: 'about.html'
+    })
+    .state('profile', {
+      url: '/profile',
+      templateUrl: 'profile.html'
     });
   
   $urlRouterProvider.otherwise("/");

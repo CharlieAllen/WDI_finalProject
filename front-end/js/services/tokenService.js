@@ -8,7 +8,8 @@ function TokenService($window, jwtHelper) {
   var self = this;
 
   self.saveToken = function(token) {
-  return $window.localStorage.setItem('secret-handshake', token);
+    console.log("in save token", token)
+    return $window.localStorage.setItem('secret-handshake', token);
   }
 
   self.getToken = function() {

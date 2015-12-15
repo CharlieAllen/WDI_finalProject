@@ -1,35 +1,35 @@
 <section ng-hide="users.isLoggedIn()" class="signup">
-<form class="form-horizontal">
+<form class="form-horizontal" ng-submit="main.register()">
     <fieldset>
         <h3 class="signup">Sign Up</h3>
         <div class="form-group">
             <label for="inputName" class="col-lg-2 control-label">Name</label>
             <div class="col-lg-10">
-              <input type="text" class="form-control" id="name" placeholder="Name" ng-model="users.user.name">
+              <input type="text" class="form-control" id="name" placeholder="Name" ng-model="main.user.name">
           </div>
       </div>
       <div class="form-group">
           <label for="inputLocation" class="col-lg-2 control-label">Location</label>
           <div class="col-lg-10">
-            <input type="text" class="form-control" id="name" placeholder="Name" ng-model="users.user.location">
+            <input type="text" class="form-control" id="name" placeholder="Name" ng-model="main.user.location">
         </div>
     </div>
     <div class="form-group">
       <label for="inputIndustry" class="col-lg-2 control-label">Industry</label>
       <div class="col-lg-10">
-        <input type="text" class="form-control" id="industry" placeholder="Industry" ng-model="users.user.industry">
+        <input type="text" class="form-control" id="industry" placeholder="Industry" ng-model="main.user.industry">
     </div>
 </div>
     <div class="form-group">
         <label for="inputEmail" class="col-lg-2 control-label">Email Address</label>
         <div class="col-lg-10">
-          <input type="text" class="form-control" id="email" placeholder="Email" ng-model="users.user.email">
+          <input type="text" class="form-control" id="email" placeholder="Email" ng-model="main.user.email">
       </div>
     </div>
     <div class="form-group">
         <label for="inputPassword" class="col-lg-2 control-label">Password</label>
         <div class="col-lg-10">
-          <input type="password" class="form-control" id="password" placeholder="Password" ng-model="users.user.password">
+          <input type="password" class="form-control" id="password" placeholder="Password" ng-model="main.user.password">
       </div>
     </div>
     

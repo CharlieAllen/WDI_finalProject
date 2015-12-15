@@ -13,29 +13,46 @@ function createSearch(keyword) {
     });
 }
 
-MainController.$inject = ['$scope', 'YOUTUBE_URL', 'TokenService', 'User'];
+MainController.$inject = ['$window', '$scope', 'YOUTUBE_URL', 'TokenService', 'User', '$location'];
 
-function MainController($scope, YOUTUBE_URL, TokenService, User){
+function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $location){
   var main = this;
 
   this.all = [];
   main.user = {};
+  main.youtubeLoaded = false;
+  main.loading = false;
+
+  $window.init = function() {
+    gapi.client.load('youtube', 'v3').then(function() {
+      gapi.client.setApiKey('AIzaSyDTU2aqu4zGnwda1KYKF2VwLYqG8hcTaM8');
+      main.youtubeLoaded = true;
+      search();
+    });
+  }
 
   function handleLogin(res) {
+    console.log(res);
     var token = res.token ? res.token : null;
 
     if (token) {
       console.log(res);
-      main.getUsers();
+      TokenService.saveToken(token);
       main.user = TokenService.decodeToken();
+      main.getUsers();
     }
 
     main.message = res.message;
   }
 
+  main.register = function() {
+     User.register(main.user, handleLogin);
+   }
+
   main.login = function() {
     console.log('running');
     User.login(main.user, handleLogin);
+    $location.path('/profile');
   }
 
   main.disappear = function() {
@@ -61,7 +78,8 @@ function MainController($scope, YOUTUBE_URL, TokenService, User){
   // added this
   main.keyword = "";
 
-  main.search = function() {
+  function search() {
+    main.loading = true;
     createSearch(main.keyword).execute(function(res) {
 
       // $scope.apply forces angular to refresh the view
@@ -69,8 +87,11 @@ function MainController($scope, YOUTUBE_URL, TokenService, User){
         main.videoIds = res.items.map(function(item) {
           return YOUTUBE_URL + item.id.videoId;
         });
+
+        main.loading = false;
       });
     });
   };
-  //createSearch('TED');
+
+  main.search = search;
 }

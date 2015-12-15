@@ -13,9 +13,7 @@ var bcrypt        = require('bcrypt');
 
 var User          = require('./models/user');
 
-var app           = express();
-
-var secret        = "SECRETWORDFORTEDCHATAPP"
+var secret        = "SECRETWORDFORTEDCHATAPP";
 
 mongoose.connect('mongodb://localhost/tedChatApp');
 
@@ -40,13 +38,21 @@ app.use(function (err, req, res, next) {
 app.use(routes);
 
 app.post("/signup", function(req ,res) {
-  var userParams = new User(req.body.user);
+  console.log("=============================> Signing up. req.body:");
+  console.log(req.body);
+  var userParams = new User(req.body);
+  console.log("userParams:", userParams);
 
   userParams.save(function(err, user ){
-    if (err) return res.json({ message: err });
+    if (err){
+      console.log("ERROR!", err);
+      return res.json({ message: err });
+    }
 
+    console.log("Saving...");
     //create a JWT and return to the angular app
     var token = jwt.sign(user, secret, { expiresIn: '30d' });
+    console.log("token:", token);
     res.status(200).json({ token: token });
 
 
@@ -56,11 +62,10 @@ app.post("/signup", function(req ,res) {
 })
 
 app.post("/login", function(req, res) {
-  console.log(req.body);
   var userParams = req.body;
-
+  console.log(userParams)
   User.findOne({ email: userParams.email }, function(err, user) {
-    if(err) res.status(401).json({ message: "Access Denied" });
+    if(err) res.status(401).json({ message: "Access Denied : " + err });
 
     user.authenticate(userParams.password, function(err, isMatch) {
       if (err) throw err;

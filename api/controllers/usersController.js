@@ -8,6 +8,7 @@ function getAll(req, res) {
 }
 
 function newUser(req, res) {
+  console.log('newUser function firing at least');
   var user = new User(req.body);
 
   user.save(function(error){
