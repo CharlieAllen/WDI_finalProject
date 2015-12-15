@@ -1,7 +1,8 @@
 angular
-  .module('tedchatApp', ['ui-router'])
+  .module('tedchatApp', ['ui.router', 'angular-jwt'])
   .constant('YOUTUBE_URL', 'https://www.youtube.com/embed/')
-  .config(whitelistUrls);
+  .config(whitelistUrls)
+  .config(MainRouter);
 
 // Google API callback function...
 function init() {
@@ -19,7 +20,7 @@ function whitelistUrls($sceDelegateProvider, YOUTUBE_URL){
   ])
 };
 
-function MainController($stateProvider, $urlRouterProvider) {
+function MainRouter($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/',
@@ -33,5 +34,6 @@ function MainController($stateProvider, $urlRouterProvider) {
       url: '/signup', 
       templateUrl: 'signup.html'
     });
-    $urlRouterProvider.otherwise("/");
+  
+  $urlRouterProvider.otherwise("/");
 }

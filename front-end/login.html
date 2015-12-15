@@ -1,12 +1,22 @@
 <section ng-hide="users.isLoggedIn()">
   <h3>Login</h3>
-  <form id="login" ng-submit="users.login()">
-    <label for="email">Email</label>
-    <input type="email" name="email" placeholder="Please enter your email address" ng-model="users.user.email">
-
-    <label for="password">Password</label>
-    <input type="password" name="password" placeholder="Please enter your password?" ng-model="users.user.password">
-
-    <input type="submit" value="Login">
+  <form id="login" ng-submit="users.getUser()">
+    <form class="form-horizontal">
+      <fieldset>
+        <div class="form-group">
+          <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="users.user.email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+          <div class="col-lg-10">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="users.user.password">
+          </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
   </form>
 </section>

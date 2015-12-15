@@ -4502,6 +4502,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default {
   background-color: #ffffff;
   border-color: #eeeeee;
+  margin-top: 10px;
+  margin-bottom: -5px;
 }
 .navbar-default .navbar-brand {
   color: #777777;
@@ -4965,13 +4967,15 @@ a.badge:focus {
 .jumbotron {
   padding-bottom: 30px;
   margin-bottom: 30px;
-  color: inherit;
-  background-color: #f4f4f4;
+  color: white;
+  background-image: url(bluespace.jpg);
+  background-size: 100%;
 }
 .jumbotron h1,
 .jumbotron .h1 {
   color: inherit;
   margin-left: 20px;
+  padding-top: 20px;
 }
 .jumbotron p {
   margin-bottom: 15px;
@@ -6813,6 +6817,8 @@ button.close {
   -webkit-filter: none;
           filter: none;
   border: 1px solid #02749c;
+  margin-top: 15px;
+  margin-bottom: -20px;
 }
 .btn-warning,
 .btn-warning:hover {

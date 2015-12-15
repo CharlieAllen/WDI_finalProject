@@ -13,8 +13,8 @@ function createSearch(keyword) {
     });
 }
 
-MainController.$inject = ['$scope', 'YOUTUBE_URL'];
-function MainController($scope, YOUTUBE_URL){
+MainController.$inject = ['$scope', 'YOUTUBE_URL', 'TokenService'];
+function MainController($scope, YOUTUBE_URL, TokenService){
   var main = this;
 
   this.all = [];
