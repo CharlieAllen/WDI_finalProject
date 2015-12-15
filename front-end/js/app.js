@@ -1,6 +1,7 @@
 angular
-  .module('tedchatApp', ['ui.router', 'angular-jwt'])
+  .module('tedchatApp', ['ui.router', 'angular-jwt', 'ngResource'])
   .constant('YOUTUBE_URL', 'https://www.youtube.com/embed/')
+  .constant('API', 'http://localhost:3000/')
   .config(whitelistUrls)
   .config(MainRouter);
 

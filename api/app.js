@@ -56,7 +56,8 @@ app.post("/signup", function(req ,res) {
 })
 
 app.post("/login", function(req, res) {
-  var userParams = req.body.user;
+  console.log(req.body);
+  var userParams = req.body;
 
   User.findOne({ email: userParams.email }, function(err, user) {
     if(err) res.status(401).json({ message: "Access Denied" });

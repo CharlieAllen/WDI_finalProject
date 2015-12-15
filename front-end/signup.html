@@ -1,4 +1,5 @@
 <section ng-hide="users.isLoggedIn()">
+<!--   <hr>
   <h3>Sign Up</h3>
   <form id="join" ng-submit="users.newUser()">
     <label for="name">Name</label>
@@ -20,5 +21,54 @@
     <input type="password" name="password" placeholder="Password" ng-model="users.user.password">
 
     <input type="submit" value="Access">
-  </form>
+</form> -->
+
+<form class="form-horizontal">
+    <fieldset>
+        <hr><h3>Sign Up</h3>
+        <div class="form-group">
+            <label for="inputName" class="col-lg-2 control-label">Name</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="name" placeholder="Name" ng-model="users.user.name">
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="inputLocation" class="col-lg-2 control-label">Location</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="name" placeholder="Name" ng-model="users.user.location">
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="inputIndustry" class="col-lg-2 control-label">Industry</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="industry" placeholder="Industry" ng-model="users.user.industry">
+    </div>
+</div>
+    <div class="form-group">
+        <label for="inputEmail" class="col-lg-2 control-label">Email Address</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" id="email" placeholder="Email" ng-model="users.user.email">
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+        <div class="col-lg-10">
+          <input type="password" class="form-control" id="password" placeholder="Password" ng-model="users.user.password">
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="textArea" class="col-lg-2 control-label">About Me</label>
+        <div class="col-lg-10">
+          <textarea class="form-control" rows="3" id="textArea" ng-model="users.user.about_me"></textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+</fieldset>
+</form>
 </section>

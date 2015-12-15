@@ -272,6 +272,10 @@ th {
   src: url('../fonts/glyphicons-halflings-regular.eot');
   src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
+.login {
+  background-image: url(bluespace.jpg);
+  color: white;
+}
 .glyphicon {
   position: relative;
   top: 1px;
@@ -2495,9 +2499,11 @@ table th[class*="col-"] {
 }
 fieldset {
   padding: 0;
-  margin: 0;
+  margin-left: 100px;
+  margin-right: auto;
   border: 0;
   min-width: 0;
+  max-width: 70%;
 }
 legend {
   display: block;
@@ -4501,7 +4507,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
   background-color: #ffffff;
-  border-color: #eeeeee;
   margin-top: 10px;
   margin-bottom: -5px;
 }

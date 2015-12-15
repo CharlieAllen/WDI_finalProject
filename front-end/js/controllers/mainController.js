@@ -13,11 +13,13 @@ function createSearch(keyword) {
     });
 }
 
-MainController.$inject = ['$scope', 'YOUTUBE_URL', 'TokenService'];
-function MainController($scope, YOUTUBE_URL, TokenService){
+MainController.$inject = ['$scope', 'YOUTUBE_URL', 'TokenService', 'User'];
+
+function MainController($scope, YOUTUBE_URL, TokenService, User){
   var main = this;
 
   this.all = [];
+  main.user = {};
 
   function handleLogin(res) {
     var token = res.token ? res.token : null;
@@ -31,8 +33,9 @@ function MainController($scope, YOUTUBE_URL, TokenService){
     main.message = res.message;
   }
 
-  main.authorize = function() {
-    User.authorize(main.user, handleLogin);
+  main.login = function() {
+    console.log('running');
+    User.login(main.user, handleLogin);
   }
 
   main.disappear = function() {
@@ -69,4 +72,5 @@ function MainController($scope, YOUTUBE_URL, TokenService){
       });
     });
   };
+  //createSearch('TED');
 }

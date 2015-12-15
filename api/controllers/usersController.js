@@ -11,16 +11,17 @@ function newUser(req, res) {
   var user = new User(req.body);
 
   user.save(function(error){
-    if (error) res.json({message: "Could not create new user because: + error" });
+    if (error) res.json({ message: "Could not create new user because: " + error });
     return res.json({ user: user });
   });
 }
 
 function getUser(req, res) {
+  console.log('getUser');
   var id = req.params.id;
 
   User.findById({_id: id}, function(error, user){
-    if (error) res.json({message: "Could not find user because: " + error })
+    if (error) res.json({ message: "Could not find user because: " + error })
     return res.json({ user: user});
   });
 }
@@ -29,7 +30,7 @@ function updateUser(req, res) {
   var id = req.params.id;
 
   User.findById({_id: id}, function(error, user) {
-    if (error) res.json({message: "Could not find user because" + error });
+    if (error) res.json({ message: "Could not find user because" + error });
 
     if (req.body.name) user.name = req.body.name;
 
