@@ -1,0 +1,12 @@
+<section ng-hide="users.isLoggedIn()">
+  <h3>Login</h3>
+  <form id="login" ng-submit="users.login()">
+    <label for="email">Email</label>
+    <input type="email" name="email" placeholder="Please enter your email address" ng-model="users.user.email">
+
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="Please enter your password?" ng-model="users.user.password">
+
+    <input type="submit" value="Login">
+  </form>
+</section>
