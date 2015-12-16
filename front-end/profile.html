@@ -1,12 +1,17 @@
 <section class="profile-page" ng-show="main.isLoggedIn()">
   <hr>
   <div class="panel panel-default">  
-    <h3 class="profile">Your Profile</h3>
-    <div class="panel-body">
-    <p><strong> Name:</strong> {{ main.user.name }}</p>
-    <p><strong> Location:</strong> {{ main.user.location }}</p>
-    <p><strong> Industry:</strong> {{ main.user.industry }}</p>
-    <p><strong> About Me:</strong> {{ main.user.about_me }}</p>
-  </div>
+      <h3 class="profile">Your Profile</h3>
+        <div class="panel-body">
+        <p><strong> Name:</strong> {{ main.user.name }}</p>
+        <p><strong> Location:</strong> {{ main.user.location }}</p>
+        <p><strong> Industry:</strong> {{ main.user.industry }}</p>
+        <p><strong> About Me:</strong> {{ main.user.about_me }}</p>
+        <p><strong> Favourite Videos:</strong> {{ main.user.favourite_videos }}</p>
+        </div>
+      <input type="submit"
+        id="edit-profile-btn" 
+        class="btn btn-default btn-sm"
+        value="Edit Your Profile">
   </div>
 </section>

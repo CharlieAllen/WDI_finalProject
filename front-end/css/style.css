@@ -4,8 +4,15 @@
 .profile-page {
   background-image: url(bluespace.jpg);
   background-size: cover;
+  padding-bottom: 500px;
 }
 .profile {
   margin-left: 20px;
   font-weight: strong;
+}
+.logout {
+  cursor: pointer;
+}
+#edit-profile-btn {
+  margin-bottom: 10px; 
 }

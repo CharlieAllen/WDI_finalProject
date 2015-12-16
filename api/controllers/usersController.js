@@ -8,7 +8,6 @@ function getAll(req, res) {
 }
 
 function newUser(req, res) {
-  console.log('newUser function firing at least');
   var user = new User(req.body);
 
   user.save(function(error){
@@ -18,7 +17,6 @@ function newUser(req, res) {
 }
 
 function getUser(req, res) {
-  console.log('getUser');
   var id = req.params.id;
 
   User.findById({_id: id}, function(error, user){
@@ -34,6 +32,8 @@ function updateUser(req, res) {
     if (error) res.json({ message: "Could not find user because" + error });
 
     if (req.body.name) user.name = req.body.name;
+    if (req.body.videoId) user.favourite_videos.push(req.body.videoId);
+    console.log(videoId);
 
     user.save(function(error) {
       if (error) res.json({message: "Could not update user because: " + error});

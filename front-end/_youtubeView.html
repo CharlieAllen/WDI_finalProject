@@ -4,6 +4,8 @@
     src="{{videoId}}" 
     frameborder="0" 
     allowfullscreen></iframe>
-
-    <!-- TODO - this is going to need a function to display a 'save' button if a user is logged in -->
+  <button
+    ng-click="main.saveVideoToUser(videoId)" 
+    class="btn btn-default btn-sm" 
+    >Save to your favourites</button>
 </div>

@@ -10,7 +10,7 @@ router.route('/users')
   .post(usersController.newUser);
 
 router.route('/users/:id')
-  .get(usersController.getAll)
+  .get(usersController.getUser)
   .patch(usersController.updateUser)
   .delete(usersController.deleteUser);
 

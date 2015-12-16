@@ -36,7 +36,6 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
     var token = res.token ? res.token : null;
 
     if (token) {
-      //console.log(res);
       TokenService.saveToken(token);
       main.user = TokenService.decodeToken();
       main.getUsers();
@@ -50,7 +49,6 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
    }
 
   main.login = function() {
-    console.log('running');
     User.login(main.user, handleLogin);
     $location.path('/profile');
   }
@@ -73,12 +71,13 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
   if (main.isLoggedIn()) {
     main.getUsers();
     var loggedInUser = TokenService.decodeToken();
-    main.user = User.find({ id: loggedInUser._id });
+    User.get({ id: loggedInUser._id }, function(res) {
+      main.user = res.user;
+    });
   }
 
   main.videoIds = [];
 
-  // added this
   main.keyword = "";
 
   function search() {
@@ -95,6 +94,11 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
       });
     });
   };
+
+  main.saveVideoToUser = function(videoId) {
+    console.log('SAVE VIDEO FUNCTION FIRING');
+    // main.favourite_videos = main.videoId.push;
+  }
 
   main.search = search;
 }
