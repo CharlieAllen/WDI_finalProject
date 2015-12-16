@@ -32,7 +32,7 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
   }
 
   function handleLogin(res) {
-    console.log(res);
+    //console.log(res);
     var token = res.token ? res.token : null;
 
     if (token) {
@@ -71,6 +71,7 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
 
   main.isLoggedIn = function() {
     return !!TokenService.getToken();
+    $location.path('/');
   }
 
   if (main.isLoggedIn()) {
