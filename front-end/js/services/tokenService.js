@@ -24,7 +24,6 @@ function TokenService($window, jwtHelper) {
     var token = self.getToken();
     return token ? jwtHelper.decodeToken(token) : {};
   }
-
 }
 
 

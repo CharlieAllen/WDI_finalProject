@@ -28,5 +28,9 @@ section.about.ng-scope {
   background-size: cover;
   padding-bottom: 500px;
   font-size: 15px;
-
+}
+section.login.ng-scope{
+  background-image: url(bluespace.jpg);
+  background-size: cover;
+  padding-bottom: 500px;
 }
