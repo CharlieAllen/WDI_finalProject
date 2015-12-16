@@ -48,6 +48,10 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
      User.register(main.user, handleLogin);
    }
 
+  main.updateUser = function() {
+    User.update({ id: main.user._id }, main.user);  
+  }
+
   main.login = function() {
     User.login(main.user, handleLogin);
     $location.path('/profile');

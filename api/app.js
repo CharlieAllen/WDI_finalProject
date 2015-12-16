@@ -49,8 +49,6 @@ app.use('/api', routes);
 app.use(routes);
 
 app.post("/signup", function(req ,res) {
-  // console.log("=============================> Signing up. req.body:");
-  // console.log(req.body);
   var userParams = new User(req.body);
   console.log("userParams:", userParams);
 
@@ -65,10 +63,6 @@ app.post("/signup", function(req ,res) {
     var token = jwt.sign(user, secret, { expiresIn: '30d' });
     console.log("token:", token);
     res.status(200).json({ token: token });
-
-
-    //   return res.json({ message: err });
-    // });
   });
 })
 
