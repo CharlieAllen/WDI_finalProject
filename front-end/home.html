@@ -8,12 +8,11 @@
 
   <div ng-repeat="videoId in main.videoIds">
     <youtube video-id="videoId"></youtube>
-
-  <button
-    ng-show="main.isLoggedIn()"
-    ng-click="main.saveVideoToUser(videoId)" 
-    class="btn btn-default btn-sm" 
-    >Save to your favourites</button>
+    <button
+      ng-show="main.isLoggedIn()"
+      ng-click="main.saveVideoToUser(videoId)" 
+      class="btn btn-default btn-sm" 
+      >Save to your favourites</button>
   </div>
 </main>
 
