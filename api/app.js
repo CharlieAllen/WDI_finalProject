@@ -13,7 +13,7 @@ var bcrypt        = require('bcrypt');
 
 var User          = require('./models/user');
 
-var secret        = "SECRETWORDFORTEDCHATAPP";
+var secret        = process.env.WDI_FINAL_PROJ_KEY;
 
 mongoose.connect('mongodb://localhost/tedChatApp');
 
