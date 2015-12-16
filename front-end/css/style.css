@@ -20,3 +20,13 @@
 #remove-from-favs-btn{
   display: block;
 }
+.about-header {
+  padding-left: 10px;
+}
+section.about.ng-scope {
+  background-image: url(bluespace.jpg);
+  background-size: cover;
+  padding-bottom: 500px;
+  font-size: 15px;
+
+}
