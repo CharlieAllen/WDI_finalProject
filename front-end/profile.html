@@ -4,36 +4,37 @@
     <h3 class="profile">Your Profile</h3>
 
     <div class="panel-body">
-      <p>Favourite Videos</p> 
+      <h4>Favourite Videos</h4> 
 
       <div ng-repeat="videoId in main.user.favourite_videos">
         <iframe width="560" 
-        height="315" 
-        src="{{videoId}}" 
-        frameborder="0" 
-        allowfullscreen></iframe>
-      <input type="submit"
-        class="btn btn-default btn-sm"
-        ng-click="main.unsaveVideoFromUser(videoId)"
-        value="Unsave Video">
-      </div>
+          height="315" 
+          src="{{videoId}}" 
+          frameborder="0" 
+          allowfullscreen></iframe>
+        <input type="submit"
+          id="remove-from-favs-btn"
+          class="btn btn-default btn-sm"
+          ng-click="main.unsaveVideoFromUser(videoId)"
+          value="Remove From Favourites">
+        </div>
 
 
-      <input type="submit"
-        id="edit-profile-btn"
-        ng-click="showProfile = !showProfile"
-        ng-init="showProfile = false" 
-        class="btn btn-default btn-sm"
-        value="Edit Your Profile">
+        <input type="submit"
+          id="edit-profile-btn"
+          ng-click="showProfile = !showProfile"
+          ng-init="showProfile = false" 
+          class="btn btn-default btn-sm"
+          value="Edit Your Profile">
 
-      <form id="edit-user-form" 
-        ng-if="showProfile"
-        ng-submit="main.updateUser(main.user)">
+        <form id="edit-user-form" 
+          ng-if="showProfile"
+          ng-submit="main.updateUser(main.user)">
 
-      <input type="submit"
-        id="edit-profile-btn" 
-        class="btn btn-default btn-sm"
-        value="Save Changes">
+        <input type="submit"
+          id="edit-profile-btn" 
+          class="btn btn-default btn-sm"
+          value="Save Changes">
 
         <div class="form-group" id="edit-user-form">
           <label for="inputName" class="col-lg-2 control-label">Name</label>

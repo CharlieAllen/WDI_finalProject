@@ -15,4 +15,8 @@
 }
 #edit-profile-btn {
   margin-bottom: 10px; 
+  margin-top: 5px;
+}
+#remove-from-favs-btn{
+  display: block;
 }
