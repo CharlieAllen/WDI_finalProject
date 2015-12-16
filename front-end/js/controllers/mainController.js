@@ -106,5 +106,13 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
     });
   }
 
+  main.unsaveVideoFromUser = function(videoId) {
+    var index = main.user.favourite_videos.indexOf(videoId);
+    main.user.favourite_videos.splice(index, 1);
+    User.update({ id: main.user._id }, main.user, function() {
+    console.log('removed a video to a user');
+    });
+  }
+
   main.search = search;
 }
