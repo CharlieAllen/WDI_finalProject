@@ -8,11 +8,15 @@
         <p><strong> Industry:</strong> {{ main.user.industry }}</p>
         <p><strong> About Me:</strong> {{ main.user.about_me }}</p>
         <p><strong> Favourite Videos:</strong> 
-        {{main.user.favourite_videos}}
+        
         <div ng-repeat="videoId in main.user.favourite_videos">
-
-          {{videoId}}
+          <iframe width="560" 
+            height="315" 
+            src="{{videoId}}" 
+            frameborder="0" 
+            allowfullscreen></iframe>
         </div>
+
       <input type="submit"
         ng-click="update"
         id="edit-profile-btn" 
