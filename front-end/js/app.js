@@ -3,7 +3,11 @@ angular
   .constant('YOUTUBE_URL', 'https://www.youtube.com/embed/')
   .constant('API', 'http://localhost:3000/')
   .config(whitelistUrls)
-  .config(MainRouter);
+  .config(MainRouter)
+  .config(function($httpProvider){
+    $httpProvider.interceptors.push('AuthInterceptor')
+  });
+
 
 // Google API callback function...
 function init() {
@@ -12,6 +16,7 @@ function init() {
 
 
 whitelistUrls.$inject = ['$sceDelegateProvider', 'YOUTUBE_URL'];
+
 function whitelistUrls($sceDelegateProvider, YOUTUBE_URL){
   $sceDelegateProvider.resourceUrlWhitelist([
     'self', 

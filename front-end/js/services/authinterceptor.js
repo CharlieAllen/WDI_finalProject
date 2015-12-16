@@ -1,6 +1,6 @@
 angular
   .module('tedchatApp')
-  .factory('authInterceptor', AuthInterceptor);
+  .factory('AuthInterceptor', AuthInterceptor);
 
 AuthInterceptor.$inject = ["API", "TokenService"];
 

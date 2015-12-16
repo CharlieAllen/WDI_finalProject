@@ -36,7 +36,7 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
     var token = res.token ? res.token : null;
 
     if (token) {
-      console.log(res);
+      //console.log(res);
       TokenService.saveToken(token);
       main.user = TokenService.decodeToken();
       main.getUsers();
@@ -52,7 +52,7 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
   main.login = function() {
     console.log('running');
     User.login(main.user, handleLogin);
-    $location.path('/profile');
+    //$location.path('/profile');
   }
 
   main.disappear = function() {

@@ -3,7 +3,7 @@ var User      = require('../models/user');
 function getAll(req, res) {
   User.find(function(error, users){
     if (error) res.json({ message: "Could not find any user"});
-    return res.json({ users: users });
+    return res.json(users);
   });
 }
 

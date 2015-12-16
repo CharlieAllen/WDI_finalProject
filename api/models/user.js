@@ -8,7 +8,7 @@ var UserSchema = new mongoose.Schema({
   location: { type: String },
   industry: { type: String },
   about_me: { type: String },
-  
+  comments: [{type: mongoose.Schema.ObjectId, ref: 'Comments'}]
 });
 
 UserSchema.pre('save', function(next) {

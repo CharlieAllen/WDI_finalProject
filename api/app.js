@@ -26,14 +26,25 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/api/users', expressJWT({ secret: secret }));
+
+app.use(function(err, req, res, next) {
+  if(err && err.name === 'UnauthorizedError') {
+    return res.status(401).json({ message: 'You must be logged in to view users'});
+  }
+  next();
+})
+
 app.use('/api/users/:id', expressJWT({secret: secret}));
 
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({message: 'Unauthorized request.'});
   }
   next();
 });
+
+var routes = require(__dirname + '/config/routes');
+app.use('/api', routes);
 
 app.use(routes);
 
