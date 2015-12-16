@@ -1,9 +1,12 @@
 <section class="profile-page">
-  <div>
-    <h3>Your Profile</h3>
-    <strong> Name:</strong> {{ main.user.name }}
-    <strong> Location:</strong> {{ main.user.location }} 
-    <strong> Industry:</strong> {{ main.user.industry }} 
-    <strong> About Me:</strong> {{ main.user.about_me }} 
+  <hr>
+  <div class="panel panel-default">  
+    <h3 class="profile">Your Profile</h3>
+    <div class="panel-body">
+    <p><strong> Name:</strong> {{ main.user.name }}</p>
+    <p><strong> Location:</strong> {{ main.user.location }}</p>
+    <p><strong> Industry:</strong> {{ main.user.industry }}</p>
+    <p><strong> About Me:</strong> {{ main.user.about_me }}</p>
+  </div>
   </div>
 </section>
