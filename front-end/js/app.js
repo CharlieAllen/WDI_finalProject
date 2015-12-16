@@ -9,10 +9,10 @@ angular
   });
 
 
-// Google API callback function...
-// function init() {
-//   window.init();
-// };
+//Google API callback function...
+function init() {
+  window.init();
+};
 
 
 whitelistUrls.$inject = ['$sceDelegateProvider', 'YOUTUBE_URL'];
