@@ -46,6 +46,7 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
 
   main.register = function() {
      User.register(main.user, handleLogin);
+     $location.path('/');
    }
 
   main.updateUser = function() {
