@@ -8,7 +8,7 @@ var UserSchema = new mongoose.Schema({
   location: { type: String },
   industry: { type: String },
   about_me: { type: String },
-  favourite_videos: [],
+  favourite_videos: Array,
   comments: [{type: mongoose.Schema.ObjectId, ref: 'Comments'}]
 });
 

@@ -96,8 +96,10 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
   };
 
   main.saveVideoToUser = function(videoId) {
-    console.log('SAVE VIDEO FUNCTION FIRING');
-    // main.favourite_videos = main.videoId.push;
+    main.user.favourite_videos.push(videoId);
+    User.update({ id: main.user._id }, main.user, function() {
+      //console.log('added a video to a user');
+    });
   }
 
   main.search = search;

@@ -22,7 +22,7 @@ function getUser(req, res) {
   User.findById({_id: id}, function(error, user){
     if (error) res.json({ message: "Could not find user because: " + error })
     return res.json({ user: user});
-  });
+  }); 
 }
 
 function updateUser(req, res) {
@@ -32,9 +32,15 @@ function updateUser(req, res) {
     if (error) res.json({ message: "Could not find user because" + error });
 
     if (req.body.name) user.name = req.body.name;
-    if (req.body.videoId) user.favourite_videos.push(req.body.videoId);
-    console.log(videoId);
+    if (req.body.email) user.email = req.body.email;
+    if (req.body.password) user.password = req.body.password;
+    if (req.body.location) user.location = req.body.location;
+    if (req.body.industry) user.industry = req.body.industry;
+    if (req.body.about_me) user.about_me = req.body.about_me;
+    if (req.body.favourite_videos) user.favourite_videos = req.body.favourite_videos;
 
+    console.log(req.body);
+    
     user.save(function(error) {
       if (error) res.json({message: "Could not update user because: " + error});
 
