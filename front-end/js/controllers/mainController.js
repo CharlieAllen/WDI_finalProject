@@ -72,7 +72,8 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
 
   if (main.isLoggedIn()) {
     main.getUsers();
-    main.user = TokenService.decodeToken();
+    var loggedInUser = TokenService.decodeToken();
+    main.user = User.find({ id: loggedInUser._id });
   }
 
   main.videoIds = [];

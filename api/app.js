@@ -15,8 +15,8 @@ var User          = require('./models/user');
 
 var secret        = process.env.WDI_FINAL_PROJ_KEY;
 
-mongoose.connect('mongodb://localhost/tedChatApp');
-
+var mongoUri      = process.env.MONGOLAB_URI || 'mongodb://localhost/tedChatApp'
+mongoose.connect(mongoUri);
 
 app.use(cors());
 
@@ -91,5 +91,5 @@ app.post("/login", function(req, res) {
   });
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000 );
 console.log("Express is listening on PORT:3000")
