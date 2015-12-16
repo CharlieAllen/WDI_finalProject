@@ -49,8 +49,8 @@ app.use('/api', routes);
 app.use(routes);
 
 app.post("/signup", function(req ,res) {
-  console.log("=============================> Signing up. req.body:");
-  console.log(req.body);
+  // console.log("=============================> Signing up. req.body:");
+  // console.log(req.body);
   var userParams = new User(req.body);
   console.log("userParams:", userParams);
 

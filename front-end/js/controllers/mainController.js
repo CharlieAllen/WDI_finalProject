@@ -52,12 +52,14 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
   main.login = function() {
     console.log('running');
     User.login(main.user, handleLogin);
-    //$location.path('/profile');
+    $location.path('/profile');
   }
 
   main.disappear = function() {
     TokenService.removeToken();
     main.all = [];
+    main.user = {};
+    $location.path('/');
   }
 
   main.getUsers = function() {

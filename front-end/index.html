@@ -53,7 +53,7 @@
 	          <a ui-sref="signup" ng-if="!main.isLoggedIn()">Create An Account</a>
 	        </li>
 	        <li>
-	        	<a ui-sref="profile">Your Profile</a>
+	        	<a ui-sref="profile" ng-if="main.isLoggedIn()">Your Profile</a>
 	        </li>
 	      </ul>
 
