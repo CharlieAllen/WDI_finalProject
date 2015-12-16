@@ -32,7 +32,6 @@ function MainController($window, $scope, YOUTUBE_URL, TokenService, User, $locat
   }
 
   function handleLogin(res) {
-    //console.log(res);
     var token = res.token ? res.token : null;
 
     if (token) {
