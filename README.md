@@ -13,7 +13,7 @@ http://charlieallen.github.io/wdi_final_front_end/?#/
 * Comment on a video
 * Only comment on a video if they are logged in
 
-[http://i.imgur.com/vjFaESy.png]
+<img src="http://i.imgur.com/vjFaESy.png">
 
 ###Tech Used
 MongoDB 
@@ -27,13 +27,13 @@ Bootswatch template 'Simplex' and Bootstrap components
 
 ###Database Model
 
-[http://i.imgur.com/u0ybYCl.png]
+<img src="http://i.imgur.com/u0ybYCl.png">
 
 ###Wireframes
 
-[img src=http://imgur.com/JW29K4q.png]
+<img src="http://imgur.com/JW29K4q.png">
 
-[http://imgur.com/w95sfeQ.png]
+<img src="http://imgur.com/w95sfeQ.png">
 
 
 ##What was a win
