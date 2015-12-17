@@ -31,7 +31,7 @@ Bootswatch template 'Simplex' and Bootstrap components
 
 ###Wireframes
 
-[http://imgur.com/JW29K4q.png]
+[img src=http://imgur.com/JW29K4q.png]
 
 [http://imgur.com/w95sfeQ.png]
 
