@@ -16,13 +16,13 @@ http://charlieallen.github.io/wdi_final_front_end/?#/
 <img src="http://i.imgur.com/vjFaESy.png">
 
 ###Tech Used
-MongoDB 
-ExpressJS v4.13.3
-AngularJS 
-NodeJS 
-BCrypt v0.8.5
-JWT v5.4.1
-Bootswatch template 'Simplex' and Bootstrap components
+* MongoDB 
+* ExpressJS v4.13.3
+* AngularJS 
+* NodeJS 
+* BCrypt v0.8.5
+* JWT v5.4.1
+* Bootswatch template 'Simplex' and Bootstrap components
 
 
 ###Database Model
