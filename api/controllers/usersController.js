@@ -44,7 +44,7 @@ function updateUser(req, res) {
     user.save(function(error) {
       if (error) res.json({message: "Could not update user because: " + error});
 
-      res.json({ message: "User succesfully updated", user: user });
+      res.json({ message: "User successfully updated", user: user });
     });
   });
 }
